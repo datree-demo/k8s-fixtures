@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: test
+  name: frontend
+spec:
+  containers:
+  - name: db
+    image: mysql:8.0.21
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: "password"
+    resources:
+      requests:
+        memory: "2G"
+        cpu: "250m"
+      limits:
+        memory: "5G"
+        cpu: "500m"
+  - name: wp
+    image: wordpress
+    resources:
+      requests:
+        memory: "3G"
+        cpu: "250m"
+      limits:
+        memory: "3G"
+        cpu: "500m"
